@@ -98,6 +98,20 @@ flowchart TB
 }
 ```
 
+## Релиз и автозапуск
+
+```bash
+Scripts/make-release.sh --install      # релизная сборка + бандл в ~/Applications/AudioSet.app
+open ~/Applications/AudioSet.app       # запуск
+```
+
+Бандл собран с `LSUIElement=true` (только меню-бар, без Dock). Автозапуск —
+через элементы входа (System Settings → General → Login Items):
+
+```bash
+osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"$HOME/Applications/AudioSet.app\", hidden:true}"
+```
+
 ## Диагностика (CLI)
 
 Проверка проводки CoreAudio без UI:
